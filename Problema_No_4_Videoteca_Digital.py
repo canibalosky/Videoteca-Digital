@@ -48,16 +48,18 @@ for titulo, año, calificacion, genero in Videoteca:
 #Entrada interactiva para el umbral de calificación y el año límite:
 #try-except se usa para manejar posibles errores de entrada, como ingresar un 
 #valor no numérico para la calificación o el año, lo que podría causar una excepción ValueError.
-#raise se utiliza para volver a lanzar la excepción después de mostrar el mensaje de error, lo que detiene 
-#la ejecución del programa si se ingresa un valor no válido. Esto asegura que el programa no continúe con datos incorrectos.
-try:
-    umbral_calificacion = float(input("\nDigite el número para la Calificación de la película o serie: "))
-    print()
-    año_limite = int(input("Digite el número para el Año de la película o serie: "))
-    print()
-except ValueError:
-    print("Error: Por favor, ingrese un número válido para la calificación (decimal) y el año (sin puntos)")
-    raise
+#Si el usuario ingresa un valor no válido, el programa muestra un mensaje y vuelve a pedir los datos.
+while True:
+    try:
+        umbral_calificacion = float(input("\nDigite el número para la Calificación de la película o serie: "))
+        print()
+        año_limite = int(input("Digite el número para el Año de la película o serie: "))
+        print()
+        break
+    except ValueError:
+        print("Error: Por favor, ingrese un número válido para la calificación (decimal) y el año (sin puntos).")
+        print("Intente de nuevo.\n")
+        continue
 #llamada a la función y muestra del resultado:
 #cantidad almacena el número de títulos que cumplen ambas condiciones, mientras que titulos_cumplen es una lista 
 #con los nombres de esos títulos.
