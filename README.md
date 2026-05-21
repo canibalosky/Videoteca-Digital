@@ -1,83 +1,86 @@
 Explicación del Proyecto: Análisis de una Videoteca con Python
+
 Objetivo del proyecto
+
 El propósito de este proyecto es trabajar con estructuras de datos en Python, específicamente listas de listas (matrices), para analizar información de películas o series.
 En concreto, se busca:
 Contar cuántos títulos cumplen dos condiciones:
-1.	Tener una calificación mayor o igual a un valor dado
-2.	Haber sido estrenados a partir de un año específico
-Estructura de los datos
-Se crea una matriz llamada Videoteca, donde cada fila representa una película o serie con la siguiente información:
-Python
-[Título, Año, Calificación, Género]
-Mostrar más líneas
-Ejemplo:
-Python
+  A.	Tener una calificación mayor o igual a un valor dado
+  B.	Haber sido estrenados a partir de un año específico
+
+1. Estructura de la Videoteca
+Se construye una matriz llamada Videoteca, donde cada fila representa un título con la siguiente información:
+  •	Título
+  •	Año de lanzamiento
+  •	Calificación
+  •	Género
+
 ["Matrix", 1999, 8.7, "Ciencia Ficción"]
-Esto significa:
-•	🎬 Título: Matrix
-•	📅 Año: 1999
-•	⭐ Calificación: 8.7
-•	🎭 Género: Ciencia Ficción
-En total, la matriz contiene 17 registros, lo que permite hacer un análisis básico.
-Lógica del programa
-El programa utiliza una función (módulo) llamada:
-Python
-contar_titulos(videoteca, umbral_calificacion, año_limite)
-¿Qué hace esta función?
-Recibe tres parámetros:
-•	videoteca: la matriz con los datos
-•	umbral_calificacion: el valor mínimo de calificación
-•	año_limite: el año mínimo permitido
-Proceso interno
-1.	Se inicia un contador en 0:
-Python
-contador = 0
-Mostrar más líneas
-2.	Se recorre cada fila de la matriz:
-Python
-for fila in videoteca:
-``
-3.	Se extraen los datos de cada película:
-Python
-titulo, año, calificacion, genero = fila
-``
-4.	Se evalúan las condiciones:
-Python
-if calificacion >= umbral_calificacion and año >= año_limite:
-5.	Si ambas se cumplen, se suma 1 al contador:
-Python
-contador += 1
-6.	Finalmente, se retorna el total:
-Python
-return contador
-Prueba del programa
-Se definen los valores de prueba:
-Python
-umbral_calificacion = 7.4
-año_limite = 1972
-Mostrar más líneas
-Luego, se llama a la función:
-Python
-resultado = contar_titulos(Videoteca, umbral_calificacion, año_limite)
-Y se imprime el resultado:
-Python
-print(f"El número de títulos con calificación >= {umbral_calificacion} y año >= {año_limite} es: {resultado}")
-Resultado obtenido
-El resultado es:
-El número de títulos con calificación >= 7.4 y año >= 1972 es: 17
-¿Por qué?
-•	Todas las películas tienen una calificación ≥ 7.4
-•	Todas fueron estrenadas en 1972 o después
-Por lo tanto, todas cumplen las condiciones.
-Conceptos aplicados
-Este proyecto permite practicar varios conceptos importantes:
-•	Listas y listas anidadas (matrices)
-•	Recorridos con for
-•	Condicionales (if)
-•	Funciones en Python
-•	Contadores
-•	Manipulación de datos
-Conclusión
-Este programa demuestra cómo analizar datos de manera sencilla usando Python.
-A partir de una estructura básica, se puede filtrar información según criterios específicos, lo cual es una habilidad clave en programación y análisis de datos.
+
+Esta estructura permite organizar múltiples datos de forma eficiente y facilita su recorrido mediante ciclos.
+
+2. Función Principal: contar_titulos
+Se define una función que permite realizar el análisis de la videoteca:
+def contar_titulos(videoteca, umbral_calificacion, año_limite):
+
+Parámetros:
+  •	videoteca: la matriz con la información de películas y series.
+  •	umbral_calificacion: valor mínimo de calificación requerido.
+  •	año_limite: año mínimo de lanzamiento.
+
+Proceso:
+  •	Se recorre cada fila de la matriz usando un ciclo for.
+  •	Se extraen los datos de cada registro.
+  •	Se evalúan dos condiciones: 
+    1.	Que la calificación sea mayor o igual al umbral.
+    2.	Que el año sea mayor o igual al límite establecido.
+Si ambas condiciones se cumplen, el título se agrega a una lista.
+
+Resultado:
+La función retorna:
+  •	La cantidad de títulos que cumplen las condiciones.
+  •	Una lista con los nombres de esos títulos.
+
+3. Visualización de la Videoteca
+Antes del análisis, el programa imprime todos los registros usando un ciclo for, lo que permite verificar el contenido de la matriz.
+
+for titulo, año, calificacion, genero in Videoteca:
+
+Esto facilita la comprensión de los datos disponibles al usuario.
+
+4. Entrada de Datos
+El programa solicita al usuario ingresar:
+  •	Un valor para calificación mínima (float)
+  •	Un valor para año mínimo (int)
+Se utiliza un bloque try-except para evitar errores si el usuario introduce datos incorrectos:
+
+try:
+    ...
+except ValueError:
+
+Esto mejora la robustez del programa al manejar entradas inválidas.
+
+5. Procesamiento y Resultados
+Una vez obtenidos los datos, se llama a la función:
+cantidad, titulos_cumplen = contar_titulos(...)
+Luego se muestra:
+  •	El número total de títulos que cumplen los criterios.
+  •	La lista de títulos (si existen).
+Si no hay coincidencias, se muestra un mensaje indicando que no se encontraron resultados.
+
+6. Uso de Condicionales
+Se utiliza una estructura if-else para decidir qué mostrar:
+  •	Si hay resultados → se listan los títulos.
+  •	Si no hay resultados → se muestra un mensaje informativo.
+
+7. Importancia del Proyecto
+Este ejercicio permite aplicar conceptos clave de programación en Python:
+  •	Manejo de listas y matrices
+  •	Uso de funciones
+  •	Estructuras de control (for, if)
+  •	Validación de datos con try-except
+  •	Interacción con el usuario (input)
+
+8. Conclusión
+El programa desarrollado permite filtrar y analizar una colección de películas y series de manera eficiente, basándose en criterios definidos por el usuario. Es un ejemplo práctico de cómo estructurar datos y aplicar lógica de programación para obtener información relevante.
 
